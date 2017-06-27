@@ -1,0 +1,35 @@
+{% extends 'PimEnrichBundle::layout.html.twig' %}
+
+{% import 'PimDataGridBundle::macros.html.twig' as dataGrid %}
+{% import 'PimUIBundle:Default:page_elements.html.twig' as elements %}
+
+
+{%  block content %}
+    {{ JSFV(form) }}
+    {% set title = 'pimee_catalog_rule.rule_title'|trans %}
+
+    {% set buttons %}
+        {{ elements.link(
+        'Cancel'|trans,
+        path('pimee_catalog_rule_rule_index'),
+        {icon: 'chevron-left'}
+        ) }}
+        {{ elements.submitBtn('', 'ok') }}
+    {% endset %}
+
+
+    {{ form_start(form) }}
+
+    {{ elements.page_header(title, buttons, null, null, elements.updated(form.vars.id), null) }}
+
+    {{ elements.form_navbar(view_element_aliases(form.vars.id ~ '.form_tab')) }}
+
+    <div class="row-fluid tab-content oro-tab-form">
+        {{ elements.form_errors(form) }}
+
+        {{ view_elements(form.vars.id ~ '.form_tab') }}
+
+    </div>
+
+    {{ form_end(form) }}
+{%  endblock %}

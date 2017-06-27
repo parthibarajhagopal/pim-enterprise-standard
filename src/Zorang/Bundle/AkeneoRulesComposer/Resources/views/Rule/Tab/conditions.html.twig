@@ -1,0 +1,356 @@
+<div class="tab-pane {{ viewElement.loop.first ? 'active' : '' }}" id="{{ viewElement.alias|replace({' ': '-', '.': '-'})|lower }}">
+    {% set generalProperties %}
+        {{ form_row(form.code) }}
+        {{ form_row(form.priority) }}
+        {{ form_row(form.category) }}
+        {{ form_row(form.family) }}
+    {% endset %}
+    {% set FieldsOptions %}
+        {% set count = 0 %}
+        {% set countnew = -1 %}
+        {% for field in form.fields %}
+            {% if field.vars.id == 'zorang_rule_fields_count' %}
+                {% set count = field.vars.value %}
+            {% else %}
+                {% if field.vars.id == 'zorang_rule_fields_countnew' %}
+                    {% set countnew = field.vars.value %}
+                {%  endif %}
+            {%  endif %}
+        <!-- ### Rule UI Currency Field Functionality Changes start ### -->
+            {% if (count != 0 or countnew != -1) and loop.index > (count * 7) and loop.index < 72 %}
+                <div class="add-blank-field" style="display:none;">
+                    {% if (loop.index - 1) % 7 == 0 %}
+                        <div style="border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+                            {{ form_row(field) }}
+                        </div>
+                    {% else %}
+
+                        {{ form_row(field) }}
+                    {%  endif %}
+                </div>
+            {% else %}
+                {% if loop.index % 7 == 0 %}
+        <!-- ### Rule UI Currency Field Functionality Changes end ### -->
+                    <div style="display:block; border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+                        {{ form_row(field) }}
+                    </div>
+                {% else %}
+                    {% if loop.last %}
+
+                            {{ form_row(field) }}
+
+                    {% else %}
+                        <div style="display:block;">
+                            {{ form_row(field) }}
+                        </div>
+                    {%  endif %}
+                {%  endif %}
+            {%  endif %}
+        {% endfor %}
+        {% block javascripts %}
+            <script type="text/javascript">
+
+                /***  ### Rule UI Currency field Functionality Changes Start ### */
+                for(var iCurrencyField=1;iCurrencyField<=10;iCurrencyField++)
+                {
+                    $('.currencyCode'+iCurrencyField).css("display","none");
+                    var fieldType = $('#zorang_rule_fields_field'+iCurrencyField).val();
+                    fieldType = fieldType.split("/");
+                    if(fieldType[1] === 'price'|| fieldType[1] === 'price_collection' || fieldType[1] === 'ricing')
+                    {
+                        $('.currencyCode'+iCurrencyField).css("display","block");
+                    }
+                    else{
+                        $('.currencyCode'+iCurrencyField).css("display","none");
+                    }
+                    //for Unit Field Hide & Show
+                    if(fieldType[1] === 'metric')
+                    {
+                        $('.unitCode'+iCurrencyField).css("display","block");
+                        $('#s2id_zorang_rule_fields_currency'+iCurrencyField).css("display","");
+                    }
+                    else
+                    {
+                        $('.unitCode'+iCurrencyField).css("display","none");
+                    }
+                    isLocalScopeAllow(fieldType[2], iCurrencyField);
+                }
+                DisableEnableBlankField();
+                function DisableEnableBlankField() {
+                        $(".add-blank-field :input").attr("disabled", true);
+                        $(".add-blank-field.added :input").attr("disabled", false);
+                    //Enable disable add & remove button
+                    var elements = document.getElementsByClassName('add-blank-field added');
+                   // alert("cnd: "+elements.length);
+                    if(elements.length>=6 ){
+                        $('#zorang_rule_fields_removefield').attr("disabled", false);
+                    }else{
+                        $('#zorang_rule_fields_removefield').attr("disabled", true);
+                    }
+                    if(elements.length<70 ){
+                        $('#zorang_rule_fields_addfield2').attr("disabled", false);
+                        }else{
+                        $('#zorang_rule_fields_addfield2').attr("disabled", true);
+                    }
+                    //Enable disable add & remove button
+                }
+                /***  ### Rule UI Currency field Functionality Changes End ### */
+                function showFieldFormEdit(count){
+                    var elements = document.getElementsByClassName('add-blank-field');
+
+                    var i, breakCondition = 8; //changes 4 to 7 for Currency, local, scope Field
+                    for ( i = 0; i < breakCondition; i++) {
+                        var added = elements[i].classList.contains('added');
+                        if (added) {
+                            breakCondition++;
+                            continue;
+                        }
+                        if (elements[i].querySelector("#zorang_rule_fields_count") == null) {
+                            elements[i].style.display = 'block';
+                            elements[i].className += " added";
+                        }
+                    }
+                    DisableEnableBlankField();
+                }
+
+                function showFieldFormCreate(count, isLocalScope){
+                    var elements = document.getElementsByClassName('add-blank-field');
+
+                    var i, breakCondition = 8; //changes 4 to 7 for Currency, local, scope Field
+                    for ( i = 1; i < breakCondition; i++) {
+                        var added = elements[i].classList.contains('added');
+                        if (added) {
+                            breakCondition++;
+                            continue;
+                        }
+                        if (elements[i].querySelector("#zorang_rule_fields_count") == null) {
+                            elements[i].style.display = 'block';
+                            elements[i].className += " added";
+                        }
+                    }
+                    DisableEnableBlankField();
+                    //isLocalScopeAllow(isLocalScope);
+                }
+
+                function changeOperator (keyStr) {
+                    var select_field = document.getElementById('zorang_rule_fields_field' + keyStr).value;
+                    var typeArr = select_field.split('/');
+                    var type = typeArr[1];
+                    var options = [];
+                    if (type === 'text' || type === 'textarea') {
+                        options = [
+                            'STARTS WITH',
+                            'ENDS WITH',
+                            'CONTAINS',
+                            'DOES NOT CONTAINS',
+                            '=',
+                            '!=',
+                            'EMPTY',
+                            'NOT EMPTY'
+                        ];
+                        showHideCurrencyTab(keyStr,false); // for Rule UI Currency Field Hide or Display
+                        showHideUnitTab(keyStr,false);
+                    } else if (type === 'metric' || type === 'number') {
+                        options = [
+                            '<',
+                            '<=',
+                            '=',
+                            '!=',
+                            '">"',
+                            '>=',
+                            'EMPTY',
+                            'NOT EMPTY'
+                        ];
+                        showHideCurrencyTab(keyStr,false); // for Rule UI Currency Field Hide or Display
+                        if(type === 'metric')
+                        {
+                            showHideUnitTab(keyStr,true);
+                        }
+                    } else if (type === 'boolean') {
+                        options = [
+                            '=',
+                            '!='
+                        ];
+                        showHideUnitTab(keyStr,false);
+                        showHideCurrencyTab(keyStr,false);
+                    } else if (type === 'e_data_simpleselect'|| type === 'e_data_multiselect' || type === 'simpleselect' || type === 'multiselect') {
+                        options = [
+                            'IN',
+                            'NOT IN',
+                            'EMPTY',
+                            'NOT EMPTY'
+                        ];
+                        showHideUnitTab(keyStr,false);
+                        showHideCurrencyTab(keyStr,false); // for Rule UI Currency Field Hide or Display
+                    } else if (type === 'date') {
+                        options = [
+                            '<',
+                            '>',
+                            '=',
+                            '!=',
+                            'BETWEEN',
+                            'NOT BETWEEN',
+                            'EMPTY',
+                            'NOT EMPTY'
+                        ];
+                        showHideUnitTab(keyStr,false);
+                        showHideCurrencyTab(keyStr,false); // for Rule UI Currency Field Hide or Display
+                    } else if (type === 'price'|| type === 'price_collection' || type === 'ricing') {
+                        options = [
+                            '<',
+                            '<=',
+                            '=',
+                            '!=',
+                            '">"',
+                            '>=',
+                            'EMPTY',
+                            'NOT EMPTY'
+                        ];
+                        showHideUnitTab(keyStr,false);
+                        showHideCurrencyTab(keyStr,true); // for Rule UI Currency Field Hide or Display
+                    } else if (type === 'picture' || type === 'file') {
+                        options = [
+                            'STARTS WITH',
+                            'ENDS WITH',
+                            'CONTAINS',
+                            'DOES NOT',
+                            'CONTAIN',
+                            '=',
+                            '!=',
+                            'EMPTY',
+                            'NOT EMPTY'
+                        ];
+                        showHideUnitTab(keyStr,false);
+                        showHideCurrencyTab(keyStr,false); // for Rule UI Currency Field Hide or Display
+                    }else if (type === 'sku' || type === 'identifier') {
+                        options = ['=','='];
+                        showHideUnitTab(keyStr,false);
+                        showHideCurrencyTab(keyStr,false); // for Rule UI Currency Field Hide or Display
+
+                    }
+
+                    var select_operator = document.getElementById('zorang_rule_fields_operator' + keyStr);
+
+                    // PRICE: , CURRENCY:
+
+                    while( select_operator.hasChildNodes() ){
+                        select_operator.removeChild(select_operator.lastChild);
+                    }
+
+                    for (var i = 0; i < options.length; i++) {
+                        var option = document.createElement("option");
+                        option.text = options[i];
+                        option.value = options[i];
+                        select_operator.appendChild(option);
+                        /**
+                         * code for updating operators label
+                         **/
+
+                        if($('#s2id_zorang_rule_fields_operator'+keyStr).find('.select2-chosen') && i==0)
+                        {
+                            $('#s2id_zorang_rule_fields_operator'+keyStr).children('.select2-default').children('.select2-chosen').html(options[0]);
+                            $('#s2id_zorang_rule_fields_operator'+keyStr).find('.select2-chosen').html(options[0]);
+                        }
+                    }
+                    isLocalScopeAllow(typeArr[2], keyStr);
+                }
+
+
+    /***  ### Rule UI Currency Field Functionality Changes Start ### */
+
+                function showHideCurrencyTab(indexId,isDisplay) {
+                    if(isDisplay)
+                    {
+                        $('.currencyCode'+indexId).css("display","block");
+                        $('#s2id_zorang_rule_fields_currency'+indexId).css("display","");
+                        //$("#s2id_zorang_rule_fields_currency"+indexId).parent().parent().removeClass('currencyCode');
+                        //$("#s2id_zorang_rule_fields_currency"+indexId).parent().parent().css('display','block');
+                    }
+                    else
+                    {
+                        $('.currencyCode'+indexId).css("display","none");
+                        /*if(!$("#s2id_zorang_rule_fields_currency"+indexId).parent().parent().hasClass("currencyCode"))
+                         {
+                         $("#s2id_zorang_rule_fields_currency"+indexId).parent().parent().css('display','none');
+                         $("#s2id_zorang_rule_fields_currency"+indexId).parent().parent().addClass("currencyCode");
+                         }*/
+                    }
+
+                }
+                function showHideUnitTab(keyStr,isDisplay)
+                {
+                    if(isDisplay)
+                    {
+                        $('.unitCode'+keyStr).css("display","block");
+                        $('#zorang_rule_fields_unit'+keyStr).css("display","");
+                    }
+                    else
+                    {
+                        $('.unitCode'+keyStr).css("display","none");
+                    }
+                }
+                /***  ###Rule UI Currency Field Functionality Changes End ### */
+
+
+                //Remove Field
+                function RemoveField(){
+
+                    var elements = document.getElementsByClassName('add-blank-field added');
+                    var cnt=0,fieldCnt=elements.length;
+
+                    var start=fieldCnt-7;
+                    var i, breakCondition = elements.length;
+                    for ( i =start ; i<breakCondition; i++) {
+                            elements[i].style.display = 'none';
+                            elements[i].className = "add-blank-field";
+                            cnt++;
+
+                       if(cnt<7){
+                           elements = document.getElementsByClassName('add-blank-field added');
+                           i=start-1;breakCondition=elements.length;
+                       }
+
+                    }
+                    DisableEnableBlankField();
+                }
+
+                function isLocalScopeAllow(isLocalScope, index) {
+
+                    if(isLocalScope == 1)
+                    {
+                        $('#zorang_rule_fields_locale'+index).attr("disabled", false);
+                        $('#zorang_rule_fields_locale'+index).parent().parent().css("display", "block");
+                        $('#zorang_rule_fields_scope'+index).attr("disabled", false);
+                        $('#zorang_rule_fields_scope'+index).parent().parent().css("display", "block");
+                    }
+                    else if(isLocalScope == 2)
+                    {
+                        $('#zorang_rule_fields_locale'+index).attr("disabled", false);
+                        $('#zorang_rule_fields_locale'+index).parent().parent().css("display", "block");
+                        $('#zorang_rule_fields_scope'+index).attr("disabled", true);
+                        $('#zorang_rule_fields_scope'+index).parent().parent().css("display", "none");
+                    }
+                    else if(isLocalScope == 3)
+                    {
+                        $('#zorang_rule_fields_locale'+index).attr("disabled", true);
+                        $('#zorang_rule_fields_locale'+index).parent().parent().css("display", "none");
+                        $('#zorang_rule_fields_scope'+index).attr("disabled", false);
+                        $('#zorang_rule_fields_scope'+index).parent().parent().css("display", "block");
+                    }
+                    else
+                    {
+                        $('#zorang_rule_fields_locale'+index).attr("disabled", true);
+                        $('#zorang_rule_fields_locale'+index).parent().parent().css("display", "none");
+                        $('#zorang_rule_fields_scope'+index).attr("disabled", true);
+                        $('#zorang_rule_fields_scope'+index).parent().parent().css("display", "none");
+                    }
+                }
+            </script>
+        {% endblock %}
+    {% endset %}
+
+    {{ elements.tabSections({
+        'pane.accordion.general_properties': generalProperties,
+        'zorang.rule.field_properties': FieldsOptions
+    }) }}
+</div>

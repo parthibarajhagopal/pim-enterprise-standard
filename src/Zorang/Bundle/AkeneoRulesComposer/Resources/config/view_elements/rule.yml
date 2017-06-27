@@ -1,0 +1,20 @@
+parameters:
+    zorang.view_element.rule.tab.conditions.template:     'ZorangAkeneoRulesComposer:Rule:Tab/conditions.html.twig'
+    zorang.view_element.rule.tab.actions.template:        'ZorangAkeneoRulesComposer:Rule:Tab/actions.html.twig'
+
+services:
+    zorang.view_element.rule.tab.conditions:
+        parent: pim_enrich.view_element.base
+        arguments:
+            - 'zorang.rule.tab.conditions'
+            - '%zorang.view_element.rule.tab.conditions.template%'
+        tags:
+            - { name: pim_enrich.view_element, type: zorang_rule.form_tab, position: 90 }
+
+    zorang.view_element.rule.tab.actions:
+        parent: pim_enrich.view_element.base
+        arguments:
+            - 'zorang.rule.tab.actions'
+            - '%zorang.view_element.rule.tab.actions.template%'
+        tags:
+            - { name: pim_enrich.view_element, type: zorang_rule.form_tab, position: 100 }

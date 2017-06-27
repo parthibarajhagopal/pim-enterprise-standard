@@ -1,0 +1,12 @@
+parameters:
+    rule_file: rules.yml
+    rule_file_path: /home/ubuntu/rulesfiles
+    php_bin: /usr/bin/php
+    logfile: importrules.log
+
+
+
+#rule_file: rules.yml
+#rule_file_path: /tmp/rulesfiles
+#php_bin: /usr/bin/php
+#logfile: rulesimport.log

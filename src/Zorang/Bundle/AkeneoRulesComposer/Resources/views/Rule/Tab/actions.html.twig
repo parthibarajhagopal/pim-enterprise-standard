@@ -1,0 +1,823 @@
+<div class="tab-pane {{ viewElement.loop.first ? 'active' : '' }}" id="{{ viewElement.alias|replace({' ': '-', '.': '-'})|lower }}">
+    {% set actioncount = 0 %}
+    {% set actioncount = form.actioncount.vars.value %}
+
+    {% if actioncount >= 1 %}
+            <div id="1" style="...">
+                {{ form_row(form.actions1) }}
+            </div>
+        {% if form.actions1.vars.value!="copy" %}
+                <div id="actionid1" class="add-blank-action" style="border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+
+                    {{ form_row(form.actionsfield1) }}
+                    {{ form_row(form.locale1) }}
+                    {{ form_row(form.scope1) }}
+                    {{ form_row(form.actionsvalue1) }}
+                    {{ form_row(form.currency1) }}
+                    {{ form_row(form.unit1) }}
+                </div>
+
+                <div id="actioncopyid1" class="add-blank-action" style="display: none;border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+                    {{ form_row(form.actionssrc1) }}
+                    {{ form_row(form.actionstarget1) }}
+                    {{ form_row(form.actionsrcscope1) }}
+                    {{ form_row(form.actiontgtscope1) }}
+                    {{ form_row(form.actionsrclocale1) }}
+                    {{ form_row(form.actiontgtlocale1) }}
+                </div>
+
+                <div id="actionAddId1" class="add-blank-action" style="display:none; border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+                    {{ form_row(form.field1) }}
+                    {{ form_row(form.items1) }}
+                </div>
+        {% else %}
+                <div id="actionid1" class="add-blank-action" style="display:none; border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+
+                    {{ form_row(form.actionsfield1) }}
+                    {{ form_row(form.locale1) }}
+                    {{ form_row(form.scope1) }}
+                    {{ form_row(form.actionsvalue1) }}
+                    {{ form_row(form.currency1) }}
+                    {{ form_row(form.unit1) }}
+                </div>
+
+                <div id="actioncopyid1" class="add-blank-action" style="border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+
+                    {{ form_row(form.actionssrc1) }}
+                    {{ form_row(form.actionstarget1) }}
+                    {{ form_row(form.actionsrcscope1) }}
+                    {{ form_row(form.actiontgtscope1) }}
+                    {{ form_row(form.actionsrclocale1) }}
+                    {{ form_row(form.actiontgtlocale1) }}
+                </div>
+
+                <div id="actionAddId1" class="add-blank-action" style="display:none; border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+                    {{ form_row(form.field1) }}
+                    {{ form_row(form.items1) }}
+                </div>
+        {%  endif %}
+    {% else %}
+            <div id="1" class="add-blank-action" style="display:none;">
+                {{ form_row(form.actions1) }}
+            </div>
+            <div id="actionid1" class="add-blank-action" style="display:none; border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+
+                {{ form_row(form.actionsfield1) }}
+                {{ form_row(form.locale1) }}
+                {{ form_row(form.scope1) }}
+                {{ form_row(form.actionsvalue1) }}
+                {{ form_row(form.currency1) }}
+                {{ form_row(form.unit1) }}
+            </div>
+
+            <div id="actioncopyid1" class="add-blank-action" style="display:none;border-bottom: 2px solid #e6e8ec; padding-bottom: 20px ">
+                {{ form_row(form.actionssrc1) }}
+                {{ form_row(form.actionstarget1) }}
+                {{ form_row(form.actionsrcscope1) }}
+                {{ form_row(form.actiontgtscope1) }}
+                {{ form_row(form.actionsrclocale1) }}
+                {{ form_row(form.actiontgtlocale1) }}
+            </div>
+
+            <div id="actionAddId1" class="add-blank-action" style="display:none; border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+                {{ form_row(form.field1) }}
+                {{ form_row(form.items1) }}
+            </div>
+
+    {%  endif %}{% if actioncount >= 2 %}
+                <div id="2" style="">
+                    {{ form_row(form.actions2) }}
+                </div>
+        {% if form.actions2.vars.value!="copy" %}
+                <div id="actionid2" class="add-blank-action" style="border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+
+                    {{ form_row(form.actionsfield2) }}
+                    {{ form_row(form.locale2) }}
+                    {{ form_row(form.scope2) }}
+                    {{ form_row(form.actionsvalue2) }}
+                    {{ form_row(form.currency2) }}
+                    {{ form_row(form.unit2) }}
+                </div>
+
+                <div id="actioncopyid2" class="add-blank-action" style="display:none; border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+
+                    {{ form_row(form.actionssrc2) }}
+                    {{ form_row(form.actionstarget2) }}
+                    {{ form_row(form.actionsrcscope2) }}
+                    {{ form_row(form.actiontgtscope2) }}
+                    {{ form_row(form.actionsrclocale2) }}
+                    {{ form_row(form.actiontgtlocale2) }}
+                </div>
+
+                <div id="actionAddId2" class="add-blank-action" style="display:none; border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+                    {{ form_row(form.field2) }}
+                    {{ form_row(form.items2) }}
+                </div>
+        {% else %}
+                <div id="actionid2" class="add-blank-action" style="display:none; border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+
+                    {{ form_row(form.actionsfield2) }}
+                    {{ form_row(form.locale2) }}
+                    {{ form_row(form.scope2) }}
+                    {{ form_row(form.actionsvalue2) }}
+                    {{ form_row(form.currency2) }}
+                    {{ form_row(form.unit2) }}
+                </div>
+
+                <div id="actioncopyid2" style="border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+
+                    {{ form_row(form.actionssrc2) }}
+                    {{ form_row(form.actionstarget2) }}
+                    {{ form_row(form.actionsrcscope2) }}
+                    {{ form_row(form.actiontgtscope2) }}
+                    {{ form_row(form.actionsrclocale2) }}
+                    {{ form_row(form.actiontgtlocale2) }}
+                </div>
+
+                <div id="actionAddId2" class="add-blank-action" style="display:none; border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+                    {{ form_row(form.field2) }}
+                    {{ form_row(form.items2) }}
+                </div>
+        {%  endif %}
+    {% else %}
+            <div id="2" class="add-blank-action" style="display:none; ">
+                {{ form_row(form.actions2) }}
+            </div>
+            <div id="actionid2" class="add-blank-action" style="display:none; border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+
+                {{ form_row(form.actionsfield2) }}
+                {{ form_row(form.locale2) }}
+                {{ form_row(form.scope2) }}
+                {{ form_row(form.actionsvalue2) }}
+                {{ form_row(form.currency2) }}
+                {{ form_row(form.unit2) }}
+            </div>
+
+            <div id="actioncopyid2" class="add-blank-action" style="display:none; border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+
+                {{ form_row(form.actionssrc2) }}
+                {{ form_row(form.actionstarget2) }}
+                {{ form_row(form.actionsrcscope2) }}
+                {{ form_row(form.actiontgtscope2) }}
+                {{ form_row(form.actionsrclocale2) }}
+                {{ form_row(form.actiontgtlocale2) }}
+            </div>
+
+            <div id="actionAddId2" class="add-blank-action" style="display:none; border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+                {{ form_row(form.field2) }}
+                {{ form_row(form.items2) }}
+            </div>
+
+    {%  endif %}
+
+
+
+    {% if actioncount >= 3 %}
+            <div id="3" style="...">
+                {{ form_row(form.actions3) }}
+            </div>
+        {% if form.actions3.vars.value!="copy" %}
+                <div id="actionid3" style="display:none; border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+
+                    {{ form_row(form.actionsfield3) }}
+                    {{ form_row(form.locale3) }}
+                    {{ form_row(form.scope3) }}
+                    {{ form_row(form.actionsvalue3) }}
+                    {{ form_row(form.currency3) }}
+                    {{ form_row(form.unit3) }}
+                </div>
+
+                <div id="actioncopyid3" class="add-blank-action" style="display:none; border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+
+                    {{ form_row(form.actionssrc3) }}
+                    {{ form_row(form.actionstarget3) }}
+                    {{ form_row(form.actionsrcscope3) }}
+                    {{ form_row(form.actiontgtscope3) }}
+                    {{ form_row(form.actionsrclocale3) }}
+                    {{ form_row(form.actiontgtlocale3) }}
+                </div>
+
+                <div id="actionAddId3" class="add-blank-action" style="display:none; border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+                    {{ form_row(form.field3) }}
+                    {{ form_row(form.items3) }}
+                </div>
+        {% else %}
+                <div id="actionid3" class="add-blank-action" style="display:none; border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+
+                    {{ form_row(form.actionsfield3) }}
+                    {{ form_row(form.locale3) }}
+                    {{ form_row(form.scope3) }}
+                    {{ form_row(form.actionsvalue3) }}
+                    {{ form_row(form.currency3) }}
+                    {{ form_row(form.unit3) }}
+                </div>
+
+                <div id="actioncopyid3" class="add-blank-action" style="border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+
+                    {{ form_row(form.actionssrc3) }}
+                    {{ form_row(form.actionstarget3) }}
+                    {{ form_row(form.actionsrcscope3) }}
+                    {{ form_row(form.actiontgtscope3) }}
+                    {{ form_row(form.actionsrclocale3) }}
+                    {{ form_row(form.actiontgtlocale3) }}
+                </div>
+
+                <div id="actionAddId3" class="add-blank-action" style="display:none; border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+                    {{ form_row(form.field3) }}
+                    {{ form_row(form.items3) }}
+                </div>
+        {%  endif %}
+    {% else %}
+            <div id="3" class="add-blank-action" style="display:none;">
+                {{ form_row(form.actions3) }}
+            </div>
+            <div id="actionid3" class="add-blank-action" style="display:none; border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+
+                {{ form_row(form.actionsfield3) }}
+                {{ form_row(form.locale3) }}
+                {{ form_row(form.scope3) }}
+                {{ form_row(form.actionsvalue3) }}
+                {{ form_row(form.currency3) }}
+                {{ form_row(form.unit3) }}
+            </div>
+
+            <div id="actioncopyid3" class="add-blank-action" style="display:none; border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+
+                {{ form_row(form.actionssrc3) }}
+                {{ form_row(form.actionstarget3) }}
+                {{ form_row(form.actionsrcscope3) }}
+                {{ form_row(form.actiontgtscope3) }}
+                {{ form_row(form.actionsrclocale3) }}
+                {{ form_row(form.actiontgtlocale3) }}
+            </div>
+
+            <div id="actionAddId3" class="add-blank-action" style="display:none; border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+                {{ form_row(form.field3) }}
+                {{ form_row(form.items3) }}
+            </div>
+
+    {%  endif %}
+
+
+    {% if actioncount >= 4 %}
+            <div id="4" style="...">
+                {{ form_row(form.actions4) }}
+            </div>
+        {% if form.actions4.vars.value!="copy" %}
+                <div id="actionid4" class="add-blank-action" style="border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+
+                    {{ form_row(form.actionsfield4) }}
+                    {{ form_row(form.locale4) }}
+                    {{ form_row(form.scope4) }}
+                    {{ form_row(form.actionsvalue4) }}
+                    {{ form_row(form.currency4) }}
+                    {{ form_row(form.unit4) }}
+                </div>
+
+                <div id="actioncopyid4" class="add-blank-action" style="display:none; border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+
+                    {{ form_row(form.actionssrc4) }}
+                    {{ form_row(form.actionstarget4) }}
+                    {{ form_row(form.actionsrcscope4) }}
+                    {{ form_row(form.actiontgtscope4) }}
+                    {{ form_row(form.actionsrclocale4) }}
+                    {{ form_row(form.actiontgtlocale4) }}
+                </div>
+
+                <div id="actionAddId4" class="add-blank-action" style="display:none;border-bottom: 2px solid #e6e8ec; padding-bottom: 20px ">
+                    {{ form_row(form.field4) }}
+                    {{ form_row(form.items4) }}
+                </div>
+        {% else %}
+                <div id="actionid4" class="add-blank-action" style="display:none; border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+
+                    {{ form_row(form.actionsfield4) }}
+                    {{ form_row(form.locale4) }}
+                    {{ form_row(form.scope4) }}
+                    {{ form_row(form.actionsvalue4) }}
+                    {{ form_row(form.currency4) }}
+                    {{ form_row(form.unit4) }}
+                </div>
+
+                <div id="actioncopyid4" class="add-blank-action" style="border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+
+                    {{ form_row(form.actionssrc4) }}
+                    {{ form_row(form.actionstarget4) }}
+                    {{ form_row(form.actionsrcscope4) }}
+                    {{ form_row(form.actiontgtscope4) }}
+                    {{ form_row(form.actionsrclocale4) }}
+                    {{ form_row(form.actiontgtlocale4) }}
+                </div>
+
+                <div id="actionAddId4" class="add-blank-action" style="display:none;border-bottom: 2px solid #e6e8ec; padding-bottom: 20px ">
+                    {{ form_row(form.field4) }}
+                    {{ form_row(form.items4) }}
+                </div>
+        {%  endif %}
+    {% else %}
+            <div id="4" class="add-blank-action" style="display:none; ">
+                {{ form_row(form.actions4) }}
+            </div>
+            <div id="actionid4" class="add-blank-action" style="display:none;border-bottom: 2px solid #e6e8ec; padding-bottom: 20px ">
+
+                {{ form_row(form.actionsfield4) }}
+                {{ form_row(form.locale4) }}
+                {{ form_row(form.scope4) }}
+                {{ form_row(form.actionsvalue4) }}
+                {{ form_row(form.currency4) }}
+                {{ form_row(form.unit4) }}
+            </div>
+
+            <div id="actioncopyid4" class="add-blank-action" style="display:none; border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+
+                {{ form_row(form.actionssrc4) }}
+                {{ form_row(form.actionstarget4) }}
+                {{ form_row(form.actionsrcscope4) }}
+                {{ form_row(form.actiontgtscope4) }}
+                {{ form_row(form.actionsrclocale4) }}
+                {{ form_row(form.actiontgtlocale4) }}
+            </div>
+
+            <div id="actionAddId4" class="add-blank-action" style="display:none; border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+                {{ form_row(form.field4) }}
+                {{ form_row(form.items4) }}
+            </div>
+
+    {%  endif %}
+
+
+    {% if actioncount >= 5 %}
+            <div id="5" style="...">
+                {{ form_row(form.actions5) }}
+            </div>
+        {% if form.actions5.vars.value!="copy" %}
+                <div id="actionid5" style="...">
+
+                    {{ form_row(form.actionsfield5) }}
+                    {{ form_row(form.locale5) }}
+                    {{ form_row(form.scope5) }}
+                    {{ form_row(form.actionsvalue5) }}
+                    {{ form_row(form.currency5) }}
+                    {{ form_row(form.unit5) }}
+                </div>
+
+                <div id="actioncopyid5" class="add-blank-action" style="display:none; border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+
+                    {{ form_row(form.actionssrc5) }}
+                    {{ form_row(form.actionstarget5) }}
+                    {{ form_row(form.actionsrcscope5) }}
+                    {{ form_row(form.actiontgtscope5) }}
+                    {{ form_row(form.actionsrclocale5) }}
+                    {{ form_row(form.actiontgtlocale5) }}
+                </div>
+
+                <div id="actionAddId5" class="add-blank-action" style="display:none; border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+                    {{ form_row(form.field5) }}
+                    {{ form_row(form.items5) }}
+                </div>
+        {% else %}
+                <div id="actionid5" class="add-blank-action" style="display:none;border-bottom: 2px solid #e6e8ec; padding-bottom: 20px ">
+
+                    {{ form_row(form.actionsfield5) }}
+                    {{ form_row(form.locale5) }}
+                    {{ form_row(form.scope5) }}
+                    {{ form_row(form.actionsvalue5) }}
+                    {{ form_row(form.currency5) }}
+                    {{ form_row(form.unit5) }}
+                </div>
+
+                <div id="actioncopyid5" class="add-blank-action" style="border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+
+                    {{ form_row(form.actionssrc5) }}
+                    {{ form_row(form.actionstarget5) }}
+                    {{ form_row(form.actionsrcscope5) }}
+                    {{ form_row(form.actiontgtscope5) }}
+                    {{ form_row(form.actionsrclocale5) }}
+                    {{ form_row(form.actiontgtlocale5) }}
+                </div>
+
+                <div id="actionAddId5" class="add-blank-action" style="display:none; border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+                    {{ form_row(form.field5) }}
+                    {{ form_row(form.items5) }}
+                </div>
+        {%  endif %}
+    {% else %}
+            <div id="5" class="add-blank-action" style="display:none; ">
+                {{ form_row(form.actions5) }}
+            </div>
+            <div id="actionid5" class="add-blank-action" style="display:none;border-bottom: 2px solid #e6e8ec; padding-bottom: 20px ">
+
+                {{ form_row(form.actionsfield5) }}
+                {{ form_row(form.locale5) }}
+                {{ form_row(form.scope5) }}
+                {{ form_row(form.actionsvalue5) }}
+                {{ form_row(form.currency5) }}
+                {{ form_row(form.unit5) }}
+            </div>
+
+            <div id="actioncopyid5" class="add-blank-action" style="display:none; border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+
+                {{ form_row(form.actionssrc5) }}
+                {{ form_row(form.actionstarget5) }}
+                {{ form_row(form.actionsrcscope5) }}
+                {{ form_row(form.actiontgtscope5) }}
+                {{ form_row(form.actionsrclocale5) }}
+                {{ form_row(form.actiontgtlocale5) }}
+            </div>
+
+            <div id="actionAddId5" class="add-blank-action" style="display:none; border-bottom: 2px solid #e6e8ec; padding-bottom: 20px">
+                {{ form_row(form.field5) }}
+                {{ form_row(form.items5) }}
+            </div>
+
+    {%  endif %}
+
+        <div style="display:block; padding: 15px 0px 15px 20px">
+                <span style="color:red;" id="errormsg" > </span>
+            {{ form_row(form.addaction) }}
+            {{ form_row(form.removeaction) }}
+        </div>
+
+
+
+
+    {% block javascripts %}
+            <script type="text/javascript">
+                disableEnableActionEmptyFields();//disabling all empty fields
+                /***  ### Action UI Currency field Functionality Hide Start ### */
+                for(var actionCurrencyField=1;actionCurrencyField<=5;actionCurrencyField++)
+                {
+                    $('.actionCurrencyClass'+actionCurrencyField).css("display","none");
+                    var fieldType = $('#zorang_rule_actionsfield'+actionCurrencyField).val();
+                    fieldType = fieldType.split("/");
+                    if(fieldType[1] === 'price'|| fieldType[1] === 'price_collection' || fieldType[1] === 'ricing')
+                    {
+                        $('.actionCurrencyClass'+actionCurrencyField).css("display","block");
+                    }
+                    else{
+                        $('.actionCurrencyClass'+actionCurrencyField).css("display","none");
+                    }
+
+                    //for Unit Field Hide & Show
+                    if(fieldType[1] === 'metric')
+                    {
+                        $('.actionUnitClass'+actionCurrencyField).css("display","block");
+                        //$('#s2id_zorang_rule_fields_currency'+indexId).css("display","");
+                        $('#zorang_rule_currency'+actionCurrencyField).attr("disabled", true);
+
+                    }
+                    else
+                    {
+                        $('.actionUnitClass'+actionCurrencyField).css("display","none");
+                    }
+
+                    //for Edit Action
+                    var fieldAction = document.getElementById('zorang_rule_actions' + actionCurrencyField).value;
+                    if(!$('#'+actionCurrencyField).hasClass('add-blank-action'))
+                    {
+                        hideunUsedFields(fieldAction,actionCurrencyField);
+                    }
+                    enableDisableLocalScope(fieldType[2], actionCurrencyField); //for scope & local
+                }
+
+                function changeFields(actionIndex) {
+                    var fieldType = $('#zorang_rule_actionsfield'+actionIndex).val();
+                    fieldType = fieldType.split("/");
+                    if(fieldType[1] === 'price'|| fieldType[1] === 'price_collection' || fieldType[1] === 'ricing')
+                    {
+                        $('.actionCurrencyClass'+actionIndex).css("display","block");
+                        $('#s2id_zorang_rule_currency'+actionIndex).css("display","");
+                        $('#zorang_rule_currency'+actionIndex).attr("disabled", false);
+                    }
+                    else{
+                        $('.actionCurrencyClass'+actionIndex).css("display","none");
+                        $('#zorang_rule_currency'+actionIndex).attr("disabled", true);
+                    }
+                    // for unit field hide/show
+                    if(fieldType[1] === 'metric')
+                    {
+                        $('#zorang_rule_unit'+actionIndex).attr("disabled", false);
+                        $('.actionUnitClass'+actionIndex).css("display","block");
+                        $('#zorang_rule_unit'+actionIndex).css("display","block");
+                    }
+                    else
+                    {
+                        $('#zorang_rule_unit'+actionIndex).attr("disabled", true);
+                        $('.actionUnitClass'+actionIndex).css("display","none");
+                    }
+                    enableDisableLocalScope(fieldType[2], actionIndex);
+                }
+
+                /***  ### Rule UI Currency field Functionality Hide End ### */
+                function changeAction(keyStr ){
+                    var select_field = document.getElementById('zorang_rule_actions' + keyStr).value;
+                    if(select_field==='copy')
+                    {
+
+                        document.getElementById('actionid'+keyStr).style.display="none";
+                        document.getElementById('actionAddId'+keyStr).style.display="none";
+                        document.getElementById('actioncopyid'+keyStr).style.display="block";
+                        $("#actionid"+keyStr+" :input").attr("disabled", true);
+                        $("#actioncopyid"+keyStr+" :input").attr("disabled", false);
+                        $("#actionAddId"+keyStr+" :input").attr("disabled", true);
+                        copyValidation(keyStr);
+                        //enableDisableCopyLocalScope(keyStr);
+                        //  document.getElementById('zorang_rule_actionValue'+keyStr).value="";
+
+                    }else if(select_field==='add' || select_field==='remove')
+                    {
+                        document.getElementById('actionid'+keyStr).style.display="none";
+                        document.getElementById('actionAddId'+keyStr).style.display="block";
+                        document.getElementById('actioncopyid'+keyStr).style.display="none";
+                        $("#actionid"+keyStr+" :input").attr("disabled", true);
+                        $("#actioncopyid"+keyStr+" :input").attr("disabled", true);
+                        $("#actioncopyid"+keyStr+" :input").prop("disabled", true);
+                        $("#actionAddId"+keyStr+" :input").attr("disabled", false);
+                    }
+
+                    else{
+                        document.getElementById('actioncopyid'+keyStr).style.display="none";
+                        document.getElementById('actionAddId'+keyStr).style.display="none";
+                        document.getElementById('actionid'+keyStr).style.display="block";
+                        $("#actionid"+keyStr+" :input").attr("disabled", false);
+                        $("#actioncopyid"+keyStr+" :input").attr("disabled", true);
+                        $("#actionAddId"+keyStr+" :input").attr("disabled", true);
+                        var fieldType = $('#zorang_rule_actionsfield'+keyStr).val();
+                        fieldType = fieldType.split("/");
+                        enableDisableLocalScope(fieldType[2], keyStr);
+                    }
+
+                }
+                function AddActionCreate(){
+
+                    var elements = document.getElementsByClassName('add-blank-action');
+
+                    var CurrentActionCount = 0;
+                    var i, breakCondition = 4;
+                    for ( i = 0; i < breakCondition; i++) {
+                        var id=elements[0].getAttribute("id");
+                        var added = elements[i].classList.contains('added');
+                        if (added) {
+                            breakCondition++;
+                            // if(elements[i].getAttribute("id")==="actioncopyid5" || elements[i].getAttribute("id")==="actionid5"){
+                            //     document.getElementById('errormsg').innerHTML="You can add only 5 actions";
+                            // }
+                            continue;
+                        }
+
+                        if (elements[i].getAttribute("id").indexOf("actioncopyid") === -1 && elements[i].querySelector("#zorang_rule_actions_actioncount") == null) {
+                            elements[i].style.display = 'block';
+                            elements[i].className += " added";
+                            //elements[i].setAttribute("disabled", "disabled");
+                            var tempCount = elements[i].id.substr(elements[i].id.length - 1);
+                            if(tempCount > CurrentActionCount)
+                            {
+                                CurrentActionCount = tempCount;
+                            }
+                        }else if (elements[i].getAttribute("id").indexOf("actionAddId") === -1 && elements[i].querySelector("#zorang_rule_actions_actioncount") == null) {
+                            elements[i].style.display = 'block';
+                            elements[i].className += " added";
+                            //elements[i].setAttribute("disabled", "disabled");
+                            var tempCount = elements[i].id.substr(elements[i].id.length - 1);
+                            if(tempCount > CurrentActionCount)
+                            {
+                                CurrentActionCount = tempCount;
+                            }
+                        }
+
+                        else{
+                            breakCondition++;
+                        }
+
+                    }
+                    var selectType = document.getElementById('zorang_rule_actions' + CurrentActionCount).value;
+                    hideunUsedFields(selectType,CurrentActionCount);
+                    //disableEnableActionEmptyFields();
+                    $("#"+CurrentActionCount+" :input").attr("disabled", false);
+                    changeAction(CurrentActionCount);
+                    DisableEnableButton();
+                }
+
+                function copyValidation(keyStr){
+                    var target=document.getElementById('zorang_rule_actionssrc' + keyStr).value;
+                    var src=document.getElementById('zorang_rule_actionstarget' + keyStr).value;
+                    var targetIdx=target.indexOf("/");
+                    var srcTypeIdx=src.indexOf("/");
+                    target=target.substring(targetIdx++,target.length);
+                    src=src.substring(srcTypeIdx++,src.length);
+                    if(target!=src){
+                        document.getElementById('errormsg').innerHTML="Please select matching From and To Attribute Type";
+                    }else{
+                        document.getElementById('errormsg').innerHTML="";
+                        enableDisableCopyLocalScope(keyStr);
+                    }
+                }
+
+                function disableEnableActionEmptyFields() {
+                    for(var j=1; j<=5;j++)
+                    {
+                        if(!$('#'+j).hasClass('added') && $('#'+j).hasClass('add-blank-action'))
+                        {
+                            $("#"+j+" :input").attr("disabled", true);
+                            $("#actionid"+j+" :input").attr("disabled", true);
+                            $("#actioncopyid"+j+" :input").attr("disabled", true);
+                            $("#actionAddId"+j+" :input").attr("disabled", true);
+                        }
+                        else{
+                            $("#"+j+" :input").attr("disabled", false);
+                            $("#actionid"+j+" :input").attr("disabled", false);
+                            $("#actioncopyid"+j+" :input").attr("disabled", false);
+                            $("#actionAddId"+j+" :input").attr("disabled", false);
+                        }
+                    }
+                //Enable disable add & remove button
+                    DisableEnableButton();
+                }
+
+                function hideunUsedFields(selectType,ActionCount)
+                {
+                    if(selectType === 'copy')
+                    {
+                        $("#actionid"+ActionCount+" :input").attr("disabled", true);
+                        $("#actionid"+ActionCount).css('display','none');
+                        $("#actionid"+ActionCount).addClass('added');
+                        $("#actioncopyid"+ActionCount+" :input").attr("disabled", false);
+                        $("#actioncopyid"+ActionCount+"").css('display','block');
+                        $("#actioncopyid"+ActionCount).addClass('added');
+                        $("#actionAddId"+ActionCount+" :input").attr("disabled", true);
+                        $("#actionAddId"+ActionCount).css('display','none');
+                        $("#actionAddId"+ActionCount).addClass('added');
+                        enableDisableCopyLocalScope(ActionCount);
+                    }
+                    else if(selectType === 'add' || selectType === 'remove'){
+                        $("#actionid"+ActionCount+" :input").attr("disabled", true);
+                        $("#actionid"+ActionCount).css('display','none');
+                        $("#actionid"+ActionCount).addClass('added');
+                        $("#actioncopyid"+ActionCount+" :input").attr("disabled", true);
+                        $("#actioncopyid"+ActionCount+"").css('display','none');
+                        $("#actioncopyid"+ActionCount+"").addClass('added');
+                        $("#actionAddId"+ActionCount+" :input").attr("disabled", false);
+                        $("#actionAddId"+ActionCount).css('display','block');
+                        $("#actionAddId"+ActionCount).addClass('added');
+                    }
+                    else
+                    {
+                        $("#actionid"+ActionCount+" :input").attr("disabled", false);
+                        $("#actionid"+ActionCount).css('display','block');
+                        $("#actionid"+ActionCount).addClass('added');
+                        $("#actioncopyid"+ActionCount+" :input").attr("disabled", true);
+                        $("#actioncopyid"+ActionCount+"").css('display','none');
+                        $("#actioncopyid"+ActionCount+"").addClass('added');
+                        $("#actionAddId"+ActionCount+" :input").attr("disabled", true);
+                        $("#actionAddId"+ActionCount).css('display','none');
+                        $("#actionAddId"+ActionCount).addClass('added');
+                        changeFields(ActionCount);
+
+                    }
+
+                }
+
+
+
+                //Remove Action
+                function RemoveAction(){
+                    var elements = document.getElementsByClassName('add-blank-action added');
+                    var actCnt=elements.length;
+                   // alert(actCnt);
+                    var cnt=0,start=0;
+                    start=elements.length-4;
+                    actCnt=4;
+                       //cnt=2;
+
+
+                    breakCondition=elements.length;
+                    //alert(breakCondition+"-- "+start+":: "+actCnt);
+                    for ( i =start ; i<breakCondition; i++) {
+
+                            elements[i].style.display = 'none';
+                            elements[i].className = "add-blank-action";
+                            cnt++;
+
+                            if (cnt < 4) {
+                            elements = document.getElementsByClassName('added');
+                            //  alert("size "+elements.length);
+                            i = start - 1;
+                            breakCondition = elements.length;
+                            //  i=elements.length+1;
+
+                        }
+                    }
+                    disableEnableActionEmptyFields();
+                    DisableEnableButton();
+                }
+
+                function DisableEnableButton(){
+                    //Enable disable add & remove button
+                    var elements = document.getElementsByClassName('add-blank-action added');
+
+                    if(elements.length>=4 ){
+                        $('#zorang_rule_removeaction').attr("disabled", false);
+                    }else{
+                        $('#zorang_rule_removeaction').attr("disabled", true);
+                    }
+                    if(elements.length<20 ){
+                        $('#zorang_rule_addaction').attr("disabled", false);
+                    }else{
+                        $('#zorang_rule_addaction').attr("disabled", true);
+                    }
+                    //Enable disable add & remove button
+                }
+
+               /* function findScopableLocalizableStatus(field,actionIndex) {
+                    alert("Attribute: "+field+ " Index: "+actionIndex);
+                    //agect call to get Status
+                    var webServiceUrl = 'http://'+location.hostname+'/service/getAttributeLocalizableStatus.php?code='+field;
+                    $.ajax(
+                        {
+                            url: webServiceUrl,
+                            success: function(result)
+                            {
+                                console.log(result);
+                            }
+                        });
+
+                }*/
+               function enableDisableLocalScope(isLocalScope, index) {
+
+                   if(isLocalScope == 1)
+                   {
+                       $('#zorang_rule_locale'+index).attr("disabled", false);
+                       $('#zorang_rule_locale'+index).parent().parent().css("display", "block");
+                       $('#zorang_rule_scope'+index).attr("disabled", false);
+                       $('#zorang_rule_scope'+index).parent().parent().css("display", "block");
+                   }
+                   else if(isLocalScope == 2)
+                   {
+                       $('#zorang_rule_locale'+index).attr("disabled", false);
+                       $('#zorang_rule_locale'+index).parent().parent().css("display", "block");
+                       $('#zorang_rule_scope'+index).attr("disabled", true);
+                       $('#zorang_rule_scope'+index).parent().parent().css("display", "none");
+                   }
+                   else if(isLocalScope == 3)
+                   {
+                       $('#zorang_rule_locale'+index).attr("disabled", true);
+                       $('#zorang_rule_locale'+index).parent().parent().css("display", "none");
+                       $('#zorang_rule_scope'+index).attr("disabled", false);
+                       $('#zorang_rule_scope'+index).parent().parent().css("display", "block");
+                   }
+                   else
+                   {
+                       $('#zorang_rule_locale'+index).attr("disabled", true);
+                       $('#zorang_rule_locale'+index).parent().parent().css("display", "none");
+                       $('#zorang_rule_scope'+index).attr("disabled", true);
+                       $('#zorang_rule_scope'+index).parent().parent().css("display", "none");
+                   }
+
+               }
+               //Copy Action local and Scope
+                function enableDisableCopyLocalScope(keyStr) {
+                    var target=document.getElementById('zorang_rule_actionssrc' + keyStr).value;
+                    var src=document.getElementById('zorang_rule_actionstarget' + keyStr).value;
+
+                    if(target.indexOf("locale:1") !== -1 && src.indexOf("locale:1") !== -1)
+                    {
+
+                        $('#zorang_rule_actionsrclocale'+keyStr).attr("disabled", false);
+                        $('#zorang_rule_actionsrclocale'+keyStr).parent().parent().css("display", "block");
+                        $('#zorang_rule_actiontgtlocale'+keyStr).attr("disabled", false);
+                        $('#zorang_rule_actiontgtlocale'+keyStr).parent().parent().css("display", "block");
+
+                    }
+                    else
+                    {
+
+                        $('#zorang_rule_actionsrclocale'+keyStr).attr("disabled", true);
+                        $('#zorang_rule_actionsrclocale'+keyStr).parent().parent().css("display", "none");
+                        $('#zorang_rule_actiontgtlocale'+keyStr).attr("disabled", true);
+                        $('#zorang_rule_actiontgtlocale'+keyStr).parent().parent().css("display", "none");
+
+                    }
+                    if(target.indexOf("scope:1") !== -1 && src.indexOf("scope:1") !== -1)
+                    {
+
+                        $('#zorang_rule_actionsrcscope'+keyStr).attr("disabled", false);
+                        $('#zorang_rule_actionsrcscope'+keyStr).parent().parent().css("display", "block");
+                        $('#zorang_rule_actiontgtscope'+keyStr).attr("disabled", false);
+                        $('#zorang_rule_actiontgtscope'+keyStr).parent().parent().css("display", "block");
+
+
+                    }
+                    else
+                    {
+                        $('#zorang_rule_actionsrcscope'+keyStr).attr("disabled", true);
+                        $('#zorang_rule_actionsrcscope'+keyStr).parent().parent().css("display", "none");
+                        $('#zorang_rule_actiontgtscope'+keyStr).attr("disabled", true);
+                        $('#zorang_rule_actiontgtscope'+keyStr).parent().parent().css("display", "none");
+
+                    }
+                }
+
+            </script>
+
+    {% endblock %}
+</div>

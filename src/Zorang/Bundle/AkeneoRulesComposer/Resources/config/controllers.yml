@@ -1,0 +1,11 @@
+parameters:
+    zorang.controller.rule.class: Zorang\Bundle\AkeneoRulesComposer\Controller\RuleController
+    akeneo_rule_engine.repository.rule_definition.class: Zorang\Bundle\AkeneoRulesComposer\Entity\Repository\RuleDefinitionRepository
+
+
+services:
+    zorang.controller.rule:
+        scope: request
+        class: '%zorang.controller.rule.class%'
+        arguments:
+            - '@akeneo_rule_engine.repository.rule_definition'

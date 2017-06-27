@@ -1,0 +1,34 @@
+parameters:
+    zorang.form.type.rule.class:            Zorang\Bundle\AkeneoRulesComposer\Form\RuleType
+    zorang.form.type.fields.class:          Zorang\Bundle\AkeneoRulesComposer\Form\FieldsType
+    zorang.entity.rule.class:               Zorang\Bundle\AkeneoRulesComposer\Entity\Rule
+    zorang.entity.fields.class:             Zorang\Bundle\AkeneoRulesComposer\Entity\Fields
+
+    pim_catalog.repository.attribute.class:     Zorang\Bundle\AkeneoRulesComposer\Entity\Repository\AttributeRepository
+    pim_enrich.repository.category.class:       Zorang\Bundle\AkeneoRulesComposer\Entity\Repository\CategoryRepository
+    pim_enrich.repository.family.class:         Zorang\Bundle\AkeneoRulesComposer\Entity\Repository\FamilyRepository
+    akeneo_rule_engine.repository.rule_definition.class:       Zorang\Bundle\AkeneoRulesComposer\Entity\Repository\RuleDefinitionRepository
+
+services:
+    zorang.form.type.rule:
+        scope: request
+        class: '%zorang.form.type.rule.class%'
+        arguments:
+            - '%zorang.entity.rule.class%'
+            - '@pim_catalog.repository.attribute'
+            - '@pim_enrich.repository.category'
+            - '@akeneo_rule_engine.repository.rule_definition'
+            - '@request'
+        tags:
+            - { name: form.type, alias: zorang_rule }
+
+    zorang.form.type.fields:
+        scope: request
+        class: '%zorang.form.type.fields.class%'
+        arguments:
+            - '@pim_catalog.repository.attribute'
+            - '@akeneo_rule_engine.repository.rule_definition'
+            - '%zorang.entity.fields.class%'
+            - '@request'
+        tags:
+            - { name: form.type, alias: zorang_fields }

@@ -1,0 +1,30 @@
+pimee_catalog_rule_rule_index:
+    path: /configuration/rules
+    defaults: { _controller: ZorangAkeneoRulesComposer:Rule:index }
+    methods: [GET]
+
+pimee_catalog_rule_rule_create:
+    path: /configuration/rules/create
+    defaults: { _controller: ZorangAkeneoRulesComposer:Rule:Create }
+
+pimee_catalog_rule_rule_edit:
+    path: /configuration/rules/{id}/edit
+    defaults: { _controller: ZorangAkeneoRulesComposer:Rule:edit }
+    requirements:
+        id: \d+
+
+pimee_catalog_rule_rule_delete:
+    path: /configuration/rules/{id}
+    defaults: { _controller: pimee_catalog_rule.controller.rule:deleteAction }
+    requirements:
+        id: '\d+'
+    methods: [DELETE]
+
+pimee_catalog_rule_rule_mass_impacted_product_count:
+    path: /configuration/rules/impacted-products
+    defaults: { _controller: pimee_catalog_rule.controller.rule:massImpactedProductCountAction }
+    methods: [GET]
+
+pimee_catalog_rule_rule_execute:
+    path: /configuration/rules/execute
+    defaults: { _controller: pimee_catalog_rule.controller.rule:executeRulesAction }
